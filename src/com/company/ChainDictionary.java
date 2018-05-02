@@ -117,9 +117,7 @@ public class ChainDictionary {
         String key = getKeyFromWorkingArray(array);
         String value = randomValueFromKey(key);
 
-
         array[array.length-1] = value;
-
     }
 
     private String getKeyFromWorkingArray(String[] array){
@@ -138,8 +136,14 @@ public class ChainDictionary {
     private String randomValueFromKey(String key){
         ArrayList<String> listOfPossibles = dictionary.get(key);
 
+        if (listOfPossibles == null){
+            return null;
+        }
+
         int randIndex = (int) Math.floor(Math.random()* listOfPossibles.size());
+
         return listOfPossibles.get(randIndex);
+
     }
 
     private void initialPrint(String[] array){
